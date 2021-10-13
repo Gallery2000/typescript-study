@@ -289,12 +289,78 @@ animals.forEach(i=>{
     i.sleep();
 });
 
+// this类型
+
+class WorkFlow{
+    step1(){
+        return this;
+    }
+    step2(){
+        return this;
+    }
+}
+const workFlow = new WorkFlow();
+workFlow.step1().step2();
 
 
+class MyFlow extends WorkFlow{
+    next(){
+        return this;
+    }
+}
+
+new MyFlow().next().step1().next().step2();
 
 
+interface Human{
+    // new(name:string):void
+    name:string;
+    eat():void;
+}
 
+class Asian implements Human{
+    constructor(name){
+        this.name = name;
+    }
+    name:string;
+    eat(){}
+    sleep(){}
+}
 
+interface Man extends Human{
+    run():void
+}
+
+interface Child{
+    cry():void
+}
+
+interface Boy extends Man,Child{
+
+}
+
+let boy:Boy = {
+    name:'123',
+    eat(){},
+    run(){},
+    cry(){}
+}
+
+// 类继承接口用implements,其他都用extends，
+class Auto{
+    state = 1;
+}
+interface AutoInterFace extends Auto{
+
+}
+
+class C implements AutoInterFace{
+    state = 1;
+}
+
+class Bus extends Auto implements AutoInterFace{
+     
+}
 
 
 
